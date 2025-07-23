@@ -124,7 +124,7 @@ ZMK_ADAPTIVE_KEY(
 };
 #else
 // Tap: sticky-shift | Shift + tap/ double-tap: caps-word | Hold: shift.
-#define MAGIC_SHIFT &smart_shift
+#define MAGIC_SHIFT &smart_shft
 ZMK_MOD_MORPH(smart_shft,
   bindings = <&sk LSHFT>, <&caps_word>;
   mods = <(MOD_LSFT)>;
