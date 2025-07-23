@@ -102,7 +102,7 @@ MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
 MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
 
 /* Magic-shift & auto-layers */
-
+#if 0
 // Tap: repeat after alpha, else sticky-shift |
 // Shift + tap/ double-tap: caps-word | Hold: shift.
 #define MAGIC_SHIFT &magic_shift LSHFT 0
@@ -122,6 +122,14 @@ ZMK_ADAPTIVE_KEY(
 &caps_word { // Mods deactivate caps-word, requires PR #1451. [TODO: rebase]
   /delete-property/ ignore-modifiers;
 };
+#else
+// Tap: sticky-shift | Shift + tap/ double-tap: caps-word | Hold: shift.
+#define MAGIC_SHIFT &smart_shift
+ZMK_MOD_MORPH(smart_shft,
+  bindings = <&sk LSHFT>, <&caps_word>;
+  mods = <(MOD_LSFT)>;
+)
+#endif
 
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
 #define SMART_NUM &smart_num NUM 0
